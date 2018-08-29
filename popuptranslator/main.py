@@ -1,4 +1,6 @@
+from bidi.algorithm import get_display
 from googletrans import Translator
+import arabic_reshaper
 import clipboard 
 
 clipBoard = clipboard.paste()
@@ -14,7 +16,10 @@ def translateIt(clipBoard, lang):
 
     if lang == 'en':
         translated = translator.translate(clipBoard, dest='fa')
-        return translated.text
+        result = arabic_reshaper.reshape( translated.text )
+        result = get_display(result, upper_is_rtl=True)
+        return result
+
     else:
         translated = translator.translate(clipBoard)
         return translated.text
