@@ -5,10 +5,17 @@ import clipboard
 
 clipBoard = clipboard.paste()
 
-def detectlang(clipBoard):
+def detectLang(clipBoard):
     detecter = Translator()
     result = detecter.detect(clipBoard)
     return result.lang
+
+
+def reshapeText(textValue):
+     reshaped = arabic_reshaper.reshape(textValue)
+     reshaped = get_display(reshaped, upper_is_rtl=True)
+     return reshaped
+
 
 
 def translateIt(clipBoard, lang):
@@ -16,11 +23,9 @@ def translateIt(clipBoard, lang):
 
     if lang == 'en':
         translated = translator.translate(clipBoard, dest='fa')
-        result = arabic_reshaper.reshape( translated.text )
-        result = get_display(result, upper_is_rtl=True)
-        return result
+        translated = reshapeText(translated.text)
+        return translated
 
     else:
         translated = translator.translate(clipBoard)
         return translated.text
-
