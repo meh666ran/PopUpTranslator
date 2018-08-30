@@ -1,8 +1,13 @@
 from popuptranslator import main
 from popuptranslator import gui
 
+
 clipBoard = main.clipBoard
-lang = main.detectlang(clipBoard)
+lang = main.detectLang(clipBoard)
 translatedText = main.translateIt(clipBoard, lang)
 
-gui.mainWin(clipBoard, translatedText)
+if lang == 'fa':
+    reshapedClipBoard = main.reshapeText(clipBoard)
+    gui.mainWin(reshapedClipBoard, translatedText)
+else:
+    gui.mainWin(clipBoard, translatedText)
