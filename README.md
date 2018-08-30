@@ -15,6 +15,7 @@ this program translates english to persian and it'll translate all other languag
 you can make a keyboard shortcut for it and anytime you want to translate anything just copy the words or sentences to your clipboard and push the buttons that you defined for shortcut.
 
 screenshots:
+
 ![ENG to FA](/images/screenshot1.png)
 
 ![FA to ENG](/images/screenshot2.png)
