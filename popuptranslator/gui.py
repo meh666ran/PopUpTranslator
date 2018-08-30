@@ -1,6 +1,5 @@
 import tkinter
 
-
 def mainWin(clipBoard, translatedText):
     popUpWindow = tkinter.Tk()
     popUpWindow.title("Translate! ")
