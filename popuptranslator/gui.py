@@ -18,3 +18,9 @@ def mainWin(clipBoard, translatedText):
     popUpWindow.geometry('%dx%d+%d+%d' % (width, height, x, y))
     popUpWindow.after(5000, lambda: popUpWindow.destroy())
     popUpWindow.mainloop()
+
+
+
+def sendNotify(text):
+    from os import system 
+    system('notify-send ' + "'" + text + "'")

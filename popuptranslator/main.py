@@ -1,9 +1,15 @@
 from bidi.algorithm import get_display
 from googletrans import Translator
 import arabic_reshaper
-import clipboard 
+import clipboard
+from sys import platform
 
-clipBoard = clipboard.paste()
+osName = platform
+if osName == 'linux':
+    from os import popen, read
+    primaryClipBoard = popen('xsel').read()
+
+secondaryClipBoard = clipboard.paste()
 
 def detectLang(clipBoard):
     detecter = Translator()
@@ -23,9 +29,10 @@ def translateIt(clipBoard, lang):
 
     if lang == 'en':
         translated = translator.translate(clipBoard, dest='fa')
-        translated = reshapeText(translated.text)
-        return translated
+        return translated.text
 
     else:
         translated = translator.translate(clipBoard)
         return translated.text
+
+
